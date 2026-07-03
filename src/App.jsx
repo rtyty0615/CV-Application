@@ -4,24 +4,24 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div class="app-container">
-        <header class="main-header">
+      <div className="app-container">
+        <header className="main-header">
           <h1>CV Builder</h1>
-          <div class="main-header-btn">
+          <div className="main-header-btn">
             <button type="button">Clear Resume</button>
             <button type="button">Load Example</button>
           </div>
         </header>
         <main>
-          <section class="left-section">
+          <section className="left-section">
             <section>
-              <header class="second-header">
+              <header className="second-header">
                 <h2>Personal Details</h2>
                 <button type="button">Save</button>
               </header>
-              <section class="input-list">
+              <section className="input-list">
                 <div>
-                  <label for="fullname">Full Name</label>
+                  <label htmlFor="fullname">Full Name</label>
                   <input
                     type="text"
                     id="fullname"
@@ -30,7 +30,7 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <label for="email">Email</label>
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -39,7 +39,7 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <label for="phone">Phone Number</label>
+                  <label htmlFor="phone">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -48,7 +48,7 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <label for="location">Location</label>
+                  <label htmlFor="location">Location</label>
                   <input
                     type="text"
                     id="location"
@@ -58,21 +58,21 @@ function App() {
                 </div>
               </section>
             </section>
-            <section class="experience">
-              <header class="second-header">
+            <section className="experience">
+              <header className="second-header">
                 <h2>Professional Experience</h2>
                 <button type="button">Save</button>
               </header>
-              <button class="add-btn" type="button">
+              <button className="add-btn" type="button">
                 + Add Experience
               </button>
-              <section class="input-list">
-                <div class="delete-container">
+              <section className="input-list">
+                <div className="delete-container">
                   <h3>Tech Corp Inc.</h3>
                   <button type="button">delete</button>
                 </div>
                 <div>
-                  <label for="company">Company</label>
+                  <label htmlFor="company">Company</label>
                   <input
                     type="text"
                     id="company"
@@ -81,7 +81,7 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <label for="position">Position</label>
+                  <label htmlFor="position">Position</label>
                   <input
                     type="text"
                     id="position"
@@ -90,8 +90,8 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <div class="date">
-                    <label for="start-date">Start Date</label>
+                  <div className="date">
+                    <label htmlFor="start-date">Start Date</label>
                     <input
                       type="text"
                       id="start-date"
@@ -99,8 +99,8 @@ function App() {
                       value="2024"
                     ></input>
                   </div>
-                  <div class="date end-date">
-                    <label for="end-date">End Date</label>
+                  <div className="date end-date">
+                    <label htmlFor="end-date">End Date</label>
                     <input
                       type="text"
                       id="end-date"
@@ -110,7 +110,7 @@ function App() {
                   </div>
                 </div>
                 <div>
-                  <label for="description">Description</label>
+                  <label htmlFor="description">Description</label>
                   <textarea
                     type="text"
                     id="description"
@@ -124,21 +124,21 @@ function App() {
                 </div>
               </section>
             </section>
-            <section class="education">
-              <header class="second-header">
+            <section className="education">
+              <header className="second-header">
                 <h2>Education</h2>
                 <button type="button">Save</button>
               </header>
-              <button class="add-btn" type="button">
+              <button className="add-btn" type="button">
                 + Add Education
               </button>
-              <section class="input-list">
-                <div class="delete-container">
+              <section className="input-list">
+                <div className="delete-container">
                   <h3>State University</h3>
                   <button type="button">delete</button>
                 </div>
                 <div>
-                  <label for="school">School/ University</label>
+                  <label htmlFor="school">School/ University</label>
                   <input
                     type="text"
                     id="school"
@@ -147,7 +147,7 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <label for="degree">Degree</label>
+                  <label htmlFor="degree">Degree</label>
                   <input
                     type="text"
                     id="degree"
@@ -156,8 +156,8 @@ function App() {
                   ></input>
                 </div>
                 <div>
-                  <div class="date">
-                    <label for="start-date">Start Date</label>
+                  <div className="date">
+                    <label htmlFor="start-date">Start Date</label>
                     <input
                       type="text"
                       id="start-date"
@@ -165,8 +165,8 @@ function App() {
                       value="2018"
                     ></input>
                   </div>
-                  <div class="date end-date">
-                    <label for="end-date">End Date</label>
+                  <div className="date end-date">
+                    <label htmlFor="end-date">End Date</label>
                     <input
                       type="text"
                       id="end-date"
@@ -176,7 +176,7 @@ function App() {
                   </div>
                 </div>
                 <div>
-                  <label for="description">Description</label>
+                  <label htmlFor="description">Description</label>
                   <textarea
                     type="text"
                     id="description"
@@ -191,8 +191,8 @@ function App() {
               </section>
             </section>
           </section>
-          <section class="right-section">
-            <header class="cv-header">
+          <section className="right-section">
+            <header className="cv-header">
               <h2>Jane Doe</h2>
               <div>
                 <p>email</p>
@@ -202,11 +202,11 @@ function App() {
                 <p>location</p>
               </div>
             </header>
-            <section class="result">
-              <h3 class="result-title">PROFESSIONAL EXPERIENCE</h3>
+            <section className="result">
+              <h3 className="result-title">PROFESSIONAL EXPERIENCE</h3>
               <hr></hr>
               <div>
-                <section class="content-section">
+                <section className="content-section">
                   <p>2024 - present</p>
                   <div>
                     <h4>Tech Corp Inc.</h4>
@@ -218,7 +218,7 @@ function App() {
                     </p>
                   </div>
                 </section>
-                <section class="content-section">
+                <section className="content-section">
                   <p>2022 - 2024</p>
                   <div>
                     <h4>Web Solutions Ltd.</h4>
@@ -232,18 +232,18 @@ function App() {
                 </section>
               </div>
             </section>
-            <section class="result">
-              <h3 class="result-title">EDUCATION</h3>
+            <section className="result">
+              <h3 className="result-title">EDUCATION</h3>
               <hr></hr>
               <div>
-                <section class="content-section">
+                <section className="content-section">
                   <p>2018 - 2022</p>
                   <div>
                     <h4>State University</h4>
                     <h5>B.S. in Computer Science</h5>
                   </div>
                 </section>
-                <section class="content-section">
+                <section className="content-section">
                   <p>2016 - 2018</p>
                   <div>
                     <h4>Community College</h4>
