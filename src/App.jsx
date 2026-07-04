@@ -1,7 +1,25 @@
-// import { useState } from 'react'
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [fullName, setfullName] = useState("Ray Hsu");
+  const [email, setEmail] = useState("ray@example.com");
+  const [phoneNumber, setPhoneNumber] = useState("(886) 912-786-023");
+  const [location, setLocation] = useState("Taipei, Taiwan");
+
+  function handleFullNameChange(e) {
+    setfullName(e.target.value);
+  }
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
+  function handlePhoneNumberChange(e) {
+    setPhoneNumber(e.target.value);
+  }
+  function handleLocationChange(e) {
+    setLocation(e.target.value);
+  }
+
   return (
     <>
       <div className="app-container">
@@ -20,42 +38,30 @@ function App() {
                 <button type="button">Save</button>
               </header>
               <section className="input-list">
-                <div>
-                  <label htmlFor="fullname">Full Name</label>
-                  <input
-                    type="text"
-                    id="fullname"
-                    name="fullname"
-                    value="Jane Doe"
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value="janedoe@example.com"
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="phone">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value="(555) 123-4567"
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="location">Location</label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    value="Halifax, NS, Canada"
-                  ></input>
-                </div>
+                <Input
+                  label="Full name"
+                  value={fullName}
+                  onChange={handleFullNameChange}
+                  type="text"
+                />
+                <Input
+                  label="Email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  type="email"
+                />
+                <Input
+                  label="Phone Number"
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                  type="tel"
+                />
+                <Input
+                  label="Location"
+                  value={location}
+                  onChange={handleLocationChange}
+                  type="text"
+                />
               </section>
             </section>
             <section className="experience">
@@ -193,13 +199,13 @@ function App() {
           </section>
           <section className="right-section">
             <header className="cv-header">
-              <h2>Jane Doe</h2>
+              <h2>{fullName}</h2>
               <div>
-                <p>email</p>
+                <p>{email}</p>
                 <p>•</p>
-                <p>phone number</p>
+                <p>{phoneNumber}</p>
                 <p>•</p>
-                <p>location</p>
+                <p>{location}</p>
               </div>
             </header>
             <section className="result">
@@ -256,6 +262,21 @@ function App() {
         </main>
       </div>
     </>
+  );
+}
+
+function Input({ label, value, type, onChange }) {
+  return (
+    <div>
+      <label htmlFor={value}>{label}</label>
+      <input
+        type={type}
+        id={value}
+        name={value}
+        value={value}
+        onChange={onChange}
+      ></input>
+    </div>
   );
 }
 
