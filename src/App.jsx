@@ -20,6 +20,25 @@ function App() {
     setLocation(e.target.value);
   }
 
+  const personalInfo = {
+    fullName: {
+      fullName: fullName,
+      onChange: handleFullNameChange,
+    },
+    email: {
+      email: email,
+      onChange: handleEmailChange,
+    },
+    phoneNumber: {
+      phoneNumber: phoneNumber,
+      onChange: handlePhoneNumberChange,
+    },
+    location: {
+      location: location,
+      onChange: handleLocationChange,
+    },
+  };
+
   return (
     <>
       <div className="app-container">
@@ -37,32 +56,7 @@ function App() {
                 <h2>Personal Details</h2>
                 <button type="button">Save</button>
               </header>
-              <section className="input-list">
-                <Input
-                  label="Full name"
-                  value={fullName}
-                  onChange={handleFullNameChange}
-                  type="text"
-                />
-                <Input
-                  label="Email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  type="email"
-                />
-                <Input
-                  label="Phone Number"
-                  value={phoneNumber}
-                  onChange={handlePhoneNumberChange}
-                  type="tel"
-                />
-                <Input
-                  label="Location"
-                  value={location}
-                  onChange={handleLocationChange}
-                  type="text"
-                />
-              </section>
+              <Person personalInfo={personalInfo}></Person>
             </section>
             <section className="experience">
               <header className="second-header">
@@ -262,6 +256,37 @@ function App() {
         </main>
       </div>
     </>
+  );
+}
+
+function Person({ personalInfo }) {
+  return (
+    <section className="input-list">
+      <Input
+        label="Full name"
+        value={personalInfo.fullName.fullName}
+        onChange={personalInfo.fullName.onChange}
+        type="text"
+      />
+      <Input
+        label="Email"
+        value={personalInfo.email.email}
+        onChange={personalInfo.email.onChange}
+        type="email"
+      />
+      <Input
+        label="Phone Number"
+        value={personalInfo.phoneNumber.phoneNumber}
+        onChange={personalInfo.phoneNumber.onChange}
+        type="tel"
+      />
+      <Input
+        label="Location"
+        value={personalInfo.location.location}
+        onChange={personalInfo.location.onChange}
+        type="text"
+      />
+    </section>
   );
 }
 
