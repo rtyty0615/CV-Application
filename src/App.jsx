@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { Person } from "./Person.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -234,50 +235,6 @@ function App() {
         </main>
       </div>
     </>
-  );
-}
-
-function Person({ data, onChange }) {
-  return (
-    <section className="input-list">
-      <Input
-        id="fullName"
-        label="Full Name"
-        value={data.fullName}
-        onChange={onChange}
-        type="text"
-      />
-      <Input
-        id="email"
-        label="Email"
-        value={data.email}
-        onChange={onChange}
-        type="email"
-      />
-      <Input
-        id="phoneNumber"
-        label="Phone Number"
-        value={data.phoneNumber}
-        onChange={onChange}
-        type="tel"
-      />
-      <Input
-        id="location"
-        label="Location"
-        value={data.location}
-        onChange={onChange}
-        type="text"
-      />
-    </section>
-  );
-}
-
-function Input({ id, label, value, type, onChange }) {
-  return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <input type={type} id={id} name={id} value={value} onChange={onChange} />
-    </div>
   );
 }
 
