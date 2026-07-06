@@ -2,42 +2,20 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [fullName, setfullName] = useState("Ray Hsu");
-  const [email, setEmail] = useState("ray@example.com");
-  const [phoneNumber, setPhoneNumber] = useState("(886) 912-786-023");
-  const [location, setLocation] = useState("Taipei, Taiwan");
+  const [personalInfo, setPersonalInfo] = useState({
+    fullName: "Ray Hsu",
+    email: "ray@example.com",
+    phoneNumber: "(886) 912-786-023",
+    location: "Taipei, Taiwan",
+  });
 
-  function handleFullNameChange(e) {
-    setfullName(e.target.value);
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setPersonalInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
-  }
-  function handlePhoneNumberChange(e) {
-    setPhoneNumber(e.target.value);
-  }
-  function handleLocationChange(e) {
-    setLocation(e.target.value);
-  }
-
-  const personalInfo = {
-    fullName: {
-      fullName: fullName,
-      onChange: handleFullNameChange,
-    },
-    email: {
-      email: email,
-      onChange: handleEmailChange,
-    },
-    phoneNumber: {
-      phoneNumber: phoneNumber,
-      onChange: handlePhoneNumberChange,
-    },
-    location: {
-      location: location,
-      onChange: handleLocationChange,
-    },
-  };
 
   return (
     <>
@@ -56,7 +34,7 @@ function App() {
                 <h2>Personal Details</h2>
                 <button type="button">Save</button>
               </header>
-              <Person personalInfo={personalInfo}></Person>
+              <Person data={personalInfo} onChange={handleInputChange}></Person>
             </section>
             <section className="experience">
               <header className="second-header">
@@ -193,13 +171,13 @@ function App() {
           </section>
           <section className="right-section">
             <header className="cv-header">
-              <h2>{fullName}</h2>
+              <h2>{personalInfo.fullName}</h2>
               <div>
-                <p>{email}</p>
+                <p>{personalInfo.email}</p>
                 <p>•</p>
-                <p>{phoneNumber}</p>
+                <p>{personalInfo.phoneNumber}</p>
                 <p>•</p>
-                <p>{location}</p>
+                <p>{personalInfo.location}</p>
               </div>
             </header>
             <section className="result">
@@ -259,48 +237,46 @@ function App() {
   );
 }
 
-function Person({ personalInfo }) {
+function Person({ data, onChange }) {
   return (
     <section className="input-list">
       <Input
-        label="Full name"
-        value={personalInfo.fullName.fullName}
-        onChange={personalInfo.fullName.onChange}
+        id="fullName"
+        label="Full Name"
+        value={data.fullName}
+        onChange={onChange}
         type="text"
       />
       <Input
+        id="email"
         label="Email"
-        value={personalInfo.email.email}
-        onChange={personalInfo.email.onChange}
+        value={data.email}
+        onChange={onChange}
         type="email"
       />
       <Input
+        id="phoneNumber"
         label="Phone Number"
-        value={personalInfo.phoneNumber.phoneNumber}
-        onChange={personalInfo.phoneNumber.onChange}
+        value={data.phoneNumber}
+        onChange={onChange}
         type="tel"
       />
       <Input
+        id="location"
         label="Location"
-        value={personalInfo.location.location}
-        onChange={personalInfo.location.onChange}
+        value={data.location}
+        onChange={onChange}
         type="text"
       />
     </section>
   );
 }
 
-function Input({ label, value, type, onChange }) {
+function Input({ id, label, value, type, onChange }) {
   return (
     <div>
-      <label htmlFor={value}>{label}</label>
-      <input
-        type={type}
-        id={value}
-        name={value}
-        value={value}
-        onChange={onChange}
-      ></input>
+      <label htmlFor={id}>{label}</label>
+      <input type={type} id={id} name={id} value={value} onChange={onChange} />
     </div>
   );
 }
