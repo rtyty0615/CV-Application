@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Person } from "./Person.jsx";
+import { Experience } from "./Experience.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -10,9 +11,22 @@ function App() {
     location: "Taipei, Taiwan",
   });
 
+  const [experience, setExperience] = useState({
+    company: "Tech Corp Inc.",
+    position: "Senior Frontend Developer",
+    startDate: "2024",
+    endDate: "Present",
+    description:
+      "Led a team of developers to rebuild the core application dashboard. Optimized rendering performance and established clean state management patterns.",
+  });
+
   function handleInputChange(e) {
     const { name, value } = e.target;
     setPersonalInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setExperience((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -30,7 +44,7 @@ function App() {
         </header>
         <main>
           <section className="left-section">
-            <section>
+            <section className="person">
               <header className="second-header">
                 <h2>Personal Details</h2>
                 <button type="button">Save</button>
@@ -45,63 +59,10 @@ function App() {
               <button className="add-btn" type="button">
                 + Add Experience
               </button>
-              <section className="input-list">
-                <div className="delete-container">
-                  <h3>Tech Corp Inc.</h3>
-                  <button type="button">delete</button>
-                </div>
-                <div>
-                  <label htmlFor="company">Company</label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value="Tech Corp Inc."
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="position">Position</label>
-                  <input
-                    type="text"
-                    id="position"
-                    name="position"
-                    value="Senior Frontend Developer"
-                  ></input>
-                </div>
-                <div>
-                  <div className="date">
-                    <label htmlFor="start-date">Start Date</label>
-                    <input
-                      type="text"
-                      id="start-date"
-                      name="start-date"
-                      value="2024"
-                    ></input>
-                  </div>
-                  <div className="date end-date">
-                    <label htmlFor="end-date">End Date</label>
-                    <input
-                      type="text"
-                      id="end-date"
-                      name="end-date"
-                      value="Present"
-                    ></input>
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="description">Description</label>
-                  <textarea
-                    type="text"
-                    id="description"
-                    name="description"
-                    rows="6"
-                  >
-                    Led a team of developers to rebuild the core application
-                    dashboard. Optimized rendering performance and established
-                    clean state management patterns.
-                  </textarea>
-                </div>
-              </section>
+              <Experience
+                data={experience}
+                onChange={handleInputChange}
+              ></Experience>
             </section>
             <section className="education">
               <header className="second-header">
@@ -188,17 +149,15 @@ function App() {
                 <section className="content-section">
                   <p>2024 - present</p>
                   <div>
-                    <h4>Tech Corp Inc.</h4>
-                    <h5>Senior Frontend Developer</h5>
-                    <p>
-                      Led a team of developers to rebuild the core application
-                      dashboard. Optimized rendering performance and established
-                      clean state management patterns.
-                    </p>
+                    <h4>{experience.company}</h4>
+                    <h5>{experience.position}</h5>
+                    <p>{experience.description}</p>
                   </div>
                 </section>
                 <section className="content-section">
-                  <p>2022 - 2024</p>
+                  <p>
+                    {experience.startDate} - {experience.endDate}
+                  </p>
                   <div>
                     <h4>Web Solutions Ltd.</h4>
                     <h5>Frontend Developer</h5>

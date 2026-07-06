@@ -1,0 +1,58 @@
+import { Input } from "./Input.jsx";
+import { TextArea } from "./Textarea.jsx";
+import "./App.css";
+
+export function Experience({ data, onChange }) {
+  return (
+    <section className="input-list">
+      <div className="delete-container">
+        <h3>{data.company}</h3>
+        <button type="button">delete</button>
+      </div>
+
+      <Input
+        id="company"
+        label="Company"
+        value={data.company}
+        onChange={onChange}
+        type="text"
+      ></Input>
+
+      <Input
+        id="position"
+        label="Position"
+        value={data.position}
+        onChange={onChange}
+        type="text"
+      ></Input>
+
+      <div className="date-row">
+        <Input
+          id="startDate"
+          label="Start Date"
+          value={data.startDate}
+          onChange={onChange}
+          type="text"
+          className="date"
+        ></Input>
+
+        <Input
+          id="endDate"
+          label="End Date"
+          value={data.endDate}
+          onChange={onChange}
+          type="text"
+          className="date end-date"
+        ></Input>
+      </div>
+
+      <TextArea
+        id="description"
+        label="Description"
+        value={data.description}
+        onChange={onChange}
+        type="text"
+      ></TextArea>
+    </section>
+  );
+}
