@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { Person } from "./Person.jsx";
 import { Experience } from "./Experience.jsx";
+import { Education } from "./Education.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -20,6 +21,13 @@ function App() {
       "Led a team of developers to rebuild the core application dashboard. Optimized rendering performance and established clean state management patterns.",
   });
 
+  const [education, setEducation] = useState({
+    school: "New York University Abu Dhabi",
+    degree: "B.A. in Film and New Media",
+    startDate: "2018",
+    endDate: "2022",
+  });
+
   function handlePersonalChange(e) {
     const { name, value } = e.target;
     setPersonalInfo((prev) => ({
@@ -30,11 +38,15 @@ function App() {
 
   function handleExperienceChange(e) {
     const { name, value } = e.target;
-    setPersonalInfo((prev) => ({
+    setExperience((prev) => ({
       ...prev,
       [name]: value,
     }));
-    setExperience((prev) => ({
+  }
+
+  function handleEducationChange(e) {
+    const { name, value } = e.target;
+    setEducation((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -83,63 +95,10 @@ function App() {
               <button className="add-btn" type="button">
                 + Add Education
               </button>
-              <section className="input-list">
-                <div className="delete-container">
-                  <h3>State University</h3>
-                  <button type="button">delete</button>
-                </div>
-                <div>
-                  <label htmlFor="school">School/ University</label>
-                  <input
-                    type="text"
-                    id="school"
-                    name="school"
-                    value="State University"
-                  ></input>
-                </div>
-                <div>
-                  <label htmlFor="degree">Degree</label>
-                  <input
-                    type="text"
-                    id="degree"
-                    name="degree"
-                    value="B.S. in Computer Science"
-                  ></input>
-                </div>
-                <div>
-                  <div className="date">
-                    <label htmlFor="start-date">Start Date</label>
-                    <input
-                      type="text"
-                      id="start-date"
-                      name="start-date"
-                      value="2018"
-                    ></input>
-                  </div>
-                  <div className="date end-date">
-                    <label htmlFor="end-date">End Date</label>
-                    <input
-                      type="text"
-                      id="end-date"
-                      name="end-date"
-                      value="2022"
-                    ></input>
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="description">Description</label>
-                  <textarea
-                    type="text"
-                    id="description"
-                    name="description"
-                    rows="6"
-                  >
-                    Led a team of developers to rebuild the core application
-                    dashboard. Optimized rendering performance and established
-                    clean state management patterns.
-                  </textarea>
-                </div>
-              </section>
+              <Education
+                data={education}
+                onChange={handleEducationChange}
+              ></Education>
             </section>
           </section>
           <section className="right-section">
@@ -158,7 +117,9 @@ function App() {
               <hr></hr>
               <div>
                 <section className="content-section">
-                  <p>2024 - present</p>
+                  <p>
+                    {experience.startDate} - {experience.endDate}
+                  </p>
                   <div>
                     <h4>{experience.company}</h4>
                     <h5>{experience.position}</h5>
@@ -186,10 +147,12 @@ function App() {
               <hr></hr>
               <div>
                 <section className="content-section">
-                  <p>2018 - 2022</p>
+                  <p>
+                    {education.startDate} - {education.endDate}
+                  </p>
                   <div>
-                    <h4>State University</h4>
-                    <h5>B.S. in Computer Science</h5>
+                    <h4>{education.school}</h4>
+                    <h5>{education.degree}</h5>
                   </div>
                 </section>
                 <section className="content-section">
