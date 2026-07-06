@@ -20,7 +20,15 @@ function App() {
       "Led a team of developers to rebuild the core application dashboard. Optimized rendering performance and established clean state management patterns.",
   });
 
-  function handleInputChange(e) {
+  function handlePersonalChange(e) {
+    const { name, value } = e.target;
+    setPersonalInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  function handleExperienceChange(e) {
     const { name, value } = e.target;
     setPersonalInfo((prev) => ({
       ...prev,
@@ -49,7 +57,10 @@ function App() {
                 <h2>Personal Details</h2>
                 <button type="button">Save</button>
               </header>
-              <Person data={personalInfo} onChange={handleInputChange}></Person>
+              <Person
+                data={personalInfo}
+                onChange={handlePersonalChange}
+              ></Person>
             </section>
             <section className="experience">
               <header className="second-header">
@@ -61,7 +72,7 @@ function App() {
               </button>
               <Experience
                 data={experience}
-                onChange={handleInputChange}
+                onChange={handleExperienceChange}
               ></Experience>
             </section>
             <section className="education">
