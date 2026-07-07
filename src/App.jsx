@@ -1,25 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import { Person } from "./Person.jsx";
-import { Experience } from "./Experience.jsx";
+import { ListExperience } from "./Experience.jsx";
 import { Education } from "./Education.jsx";
+import { initialPersonal, initialExperience } from "./initial.jsx";
 
 function App() {
-  const [personalInfo, setPersonalInfo] = useState({
-    fullName: "Ray Hsu",
-    email: "ray@example.com",
-    phoneNumber: "(886) 912-786-023",
-    location: "Taipei, Taiwan",
-  });
+  const [personalInfo, setPersonalInfo] = useState(initialPersonal);
 
-  const [experience, setExperience] = useState({
-    company: "Tech Corp Inc.",
-    position: "Senior Frontend Developer",
-    startDate: "2024",
-    endDate: "Present",
-    description:
-      "Led a team of developers to rebuild the core application dashboard. Optimized rendering performance and established clean state management patterns.",
-  });
+  const [experienceList, setExperienceList] = useState(initialExperience);
 
   const [education, setEducation] = useState({
     school: "New York University Abu Dhabi",
@@ -36,9 +25,9 @@ function App() {
     }));
   }
 
-  function handleExperienceChange(e) {
+  function handleExperienceListChange(e) {
     const { name, value } = e.target;
-    setExperience((prev) => ({
+    setExperienceList((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -82,10 +71,10 @@ function App() {
               <button className="add-btn" type="button">
                 + Add Experience
               </button>
-              <Experience
-                data={experience}
-                onChange={handleExperienceChange}
-              ></Experience>
+              <ListExperience
+                data={experienceList}
+                onChange={handleExperienceListChange}
+              ></ListExperience>
             </section>
             <section className="education">
               <header className="second-header">
@@ -117,19 +106,17 @@ function App() {
               <hr></hr>
               <div>
                 <section className="content-section">
-                  <p>
+                  {/* <p>
                     {experience.startDate} - {experience.endDate}
                   </p>
                   <div>
                     <h4>{experience.company}</h4>
                     <h5>{experience.position}</h5>
                     <p>{experience.description}</p>
-                  </div>
+                  </div> */}
                 </section>
                 <section className="content-section">
-                  <p>
-                    {experience.startDate} - {experience.endDate}
-                  </p>
+                  <p>{/* {experience.startDate} - {experience.endDate} */}</p>
                   <div>
                     <h4>Web Solutions Ltd.</h4>
                     <h5>Frontend Developer</h5>

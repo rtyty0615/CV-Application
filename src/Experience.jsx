@@ -2,9 +2,25 @@ import { Input } from "./Input.jsx";
 import { TextArea } from "./Textarea.jsx";
 import "./App.css";
 
-export function Experience({ data, onChange }) {
+export function ListExperience(props) {
   return (
-    <section className="input-list">
+    <ul>
+      {props.data.map((experienceItem) => {
+        return (
+          <Experience
+            key={experienceItem.id}
+            data={experienceItem}
+            onChange={props.onChange}
+          />
+        );
+      })}
+    </ul>
+  );
+}
+
+function Experience({ data, onChange }) {
+  return (
+    <li className="input-list">
       <div className="delete-container">
         <h3>{data.company}</h3>
         <button type="button">delete</button>
@@ -53,6 +69,6 @@ export function Experience({ data, onChange }) {
         onChange={onChange}
         type="text"
       ></TextArea>
-    </section>
+    </li>
   );
 }
