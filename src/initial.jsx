@@ -1,3 +1,9 @@
+export const initalStatus = {
+  personal: true,
+  experience: true,
+  education: true,
+};
+
 export const initialPersonal = {
   fullName: "Ray Hsu",
   email: "ray@example.com",

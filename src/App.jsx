@@ -7,15 +7,23 @@ import {
   initialPersonal,
   initialExperience,
   initialEducation,
+  initalStatus,
 } from "./initial.jsx";
 import { CVExperienceList } from "./CVExperience.jsx";
 import { CVEducationList } from "./CVEducation.jsx";
 
 function App() {
+  const [editStatus, setEdit] = useState(initalStatus);
+  function handleEditClick(e) {
+    const { name } = e.target;
+    setEdit((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  }
+
   const [personalInfo, setPersonalInfo] = useState(initialPersonal);
-
   const [experienceList, setExperienceList] = useState(initialExperience);
-
   const [educationList, setEducationList] = useState(initialEducation);
 
   function handlePersonalChange(e) {
@@ -25,10 +33,8 @@ function App() {
       [name]: value,
     }));
   }
-
   function handleExperienceListChange(e, id) {
     const { name, value } = e.target;
-
     setExperienceList((prev) =>
       prev.map((item) => {
         if (item.id === id) {
@@ -38,14 +44,8 @@ function App() {
       }),
     );
   }
-
   function handleEducationListChange(e, id) {
     const { name, value } = e.target;
-
-    console.log("Updating field:", name);
-    console.log("With value:", value);
-    console.log("For the item with ID:", id);
-
     setEducationList((prev) =>
       prev.map((item) => {
         if (item.id === id) {
@@ -71,38 +71,62 @@ function App() {
             <section className="person">
               <header className="second-header">
                 <h2>Personal Details</h2>
-                <button type="button">Save</button>
+                <button type="button" onClick={handleEditClick} name="personal">
+                  {editStatus.personal ? "Save" : "Edit"}
+                </button>
               </header>
-              <Person
-                data={personalInfo}
-                onChange={handlePersonalChange}
-              ></Person>
+              {editStatus.personal && (
+                <Person
+                  data={personalInfo}
+                  onChange={handlePersonalChange}
+                ></Person>
+              )}
             </section>
             <section className="experience">
               <header className="second-header">
                 <h2>Professional Experience</h2>
-                <button type="button">Save</button>
+                <button
+                  type="button"
+                  onClick={handleEditClick}
+                  name="experience"
+                >
+                  {editStatus.experience ? "Save" : "Edit"}
+                </button>
               </header>
-              <button className="add-btn" type="button">
-                + Add Experience
-              </button>
-              <ListExperience
-                data={experienceList}
-                onChange={handleExperienceListChange}
-              ></ListExperience>
+              {editStatus.experience && (
+                <>
+                  <button className="add-btn" type="button">
+                    + Add Experience
+                  </button>
+                  <ListExperience
+                    data={experienceList}
+                    onChange={handleExperienceListChange}
+                  ></ListExperience>
+                </>
+              )}
             </section>
             <section className="education">
               <header className="second-header">
                 <h2>Education</h2>
-                <button type="button">Save</button>
+                <button
+                  type="button"
+                  onClick={handleEditClick}
+                  name="education"
+                >
+                  {editStatus.education ? "Save" : "Edit"}
+                </button>
               </header>
-              <button className="add-btn" type="button">
-                + Add Education
-              </button>
-              <ListEducation
-                data={educationList}
-                onChange={handleEducationListChange}
-              ></ListEducation>
+              {editStatus.education && (
+                <>
+                  <button className="add-btn" type="button">
+                    + Add Education
+                  </button>
+                  <ListEducation
+                    data={educationList}
+                    onChange={handleEducationListChange}
+                  ></ListEducation>
+                </>
+              )}
             </section>
           </section>
           <section className="right-section">
