@@ -8,7 +8,8 @@ import {
   initialExperience,
   initialEducation,
   initalStatus,
-} from "./initial.jsx";
+} from "./Initial.jsx";
+import { clearPersonal, clearExperience, clearEducation } from "./Clear.jsx";
 import { CVExperienceList } from "./CVExperience.jsx";
 import { CVEducationList } from "./CVEducation.jsx";
 
@@ -30,6 +31,12 @@ function App() {
     setPersonalInfo(initialPersonal);
     setExperienceList(initialExperience);
     setEducationList(initialEducation);
+  }
+
+  function handleClearClick() {
+    setPersonalInfo(clearPersonal);
+    setExperienceList(clearExperience);
+    setEducationList(clearEducation);
   }
 
   function handlePersonalChange(e) {
@@ -68,7 +75,9 @@ function App() {
         <header className="main-header">
           <h1>CV Builder</h1>
           <div className="main-header-btn">
-            <button type="button">Clear Resume</button>
+            <button type="button" onClick={handleClearClick}>
+              Clear Resume
+            </button>
             <button type="button" onClick={handleExampleClick}>
               Load Example
             </button>
