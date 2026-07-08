@@ -2,21 +2,21 @@ import { useState } from "react";
 import "./App.css";
 import { Person } from "./Person.jsx";
 import { ListExperience } from "./Experience.jsx";
-import { Education } from "./Education.jsx";
-import { initialPersonal, initialExperience } from "./initial.jsx";
+import { ListEducation } from "./Education.jsx";
+import {
+  initialPersonal,
+  initialExperience,
+  initialEducation,
+} from "./initial.jsx";
 import { CVExperienceList } from "./CVExperience.jsx";
+import { CVEducationList } from "./CVEducation.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(initialPersonal);
 
   const [experienceList, setExperienceList] = useState(initialExperience);
 
-  const [education, setEducation] = useState({
-    school: "New York University Abu Dhabi",
-    degree: "B.A. in Film and New Media",
-    startDate: "2018",
-    endDate: "2022",
-  });
+  const [educationList, setEducationList] = useState(initialEducation);
 
   function handlePersonalChange(e) {
     const { name, value } = e.target;
@@ -28,9 +28,6 @@ function App() {
 
   function handleExperienceListChange(e, id) {
     const { name, value } = e.target;
-    console.log("Updating field:", name);
-    console.log("With value:", value);
-    console.log("For the item with ID:", id);
 
     setExperienceList((prev) =>
       prev.map((item) => {
@@ -42,12 +39,21 @@ function App() {
     );
   }
 
-  function handleEducationChange(e) {
+  function handleEducationListChange(e, id) {
     const { name, value } = e.target;
-    setEducation((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    console.log("Updating field:", name);
+    console.log("With value:", value);
+    console.log("For the item with ID:", id);
+
+    setEducationList((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          return { ...item, [name]: value };
+        }
+        return item;
+      }),
+    );
   }
 
   return (
@@ -93,10 +99,10 @@ function App() {
               <button className="add-btn" type="button">
                 + Add Education
               </button>
-              <Education
-                data={education}
-                onChange={handleEducationChange}
-              ></Education>
+              <ListEducation
+                data={educationList}
+                onChange={handleEducationListChange}
+              ></ListEducation>
             </section>
           </section>
           <section className="right-section">
@@ -118,24 +124,7 @@ function App() {
             <section className="result">
               <h3 className="result-title">EDUCATION</h3>
               <hr></hr>
-              <div>
-                <section className="content-section">
-                  <p>
-                    {education.startDate} - {education.endDate}
-                  </p>
-                  <div>
-                    <h4>{education.school}</h4>
-                    <h5>{education.degree}</h5>
-                  </div>
-                </section>
-                <section className="content-section">
-                  <p>2016 - 2018</p>
-                  <div>
-                    <h4>Community College</h4>
-                    <h5>Advanced Diploma in Web Development</h5>
-                  </div>
-                </section>
-              </div>
+              <CVEducationList data={educationList}></CVEducationList>
             </section>
           </section>
         </main>

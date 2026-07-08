@@ -32,11 +32,13 @@ export const initialEducation = [
     degree: "B.A. in Film and New Media",
     startDate: "2016",
     endDate: "2022",
+    id: crypto.randomUUID(),
   },
   {
     school: "Taichung First Senior High School",
     degree: "Social Science and Humanity Curriculum",
     startDate: "2013",
     endDate: "2016",
+    id: crypto.randomUUID(),
   },
 ];

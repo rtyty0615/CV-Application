@@ -1,7 +1,23 @@
 import { Input } from "./Input.jsx";
 import "./App.css";
 
-export function Education({ data, onChange }) {
+export function ListEducation(props) {
+  return (
+    <ul>
+      {props.data.map((educationItem) => {
+        return (
+          <Education
+            key={educationItem.id}
+            data={educationItem}
+            onChange={(e) => props.onChange(e, educationItem.id)}
+          />
+        );
+      })}
+    </ul>
+  );
+}
+
+function Education({ data, onChange }) {
   return (
     <section className="input-list">
       <div className="delete-container">
