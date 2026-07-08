@@ -26,6 +26,12 @@ function App() {
   const [experienceList, setExperienceList] = useState(initialExperience);
   const [educationList, setEducationList] = useState(initialEducation);
 
+  function handleExampleClick() {
+    setPersonalInfo(initialPersonal);
+    setExperienceList(initialExperience);
+    setEducationList(initialEducation);
+  }
+
   function handlePersonalChange(e) {
     const { name, value } = e.target;
     setPersonalInfo((prev) => ({
@@ -63,7 +69,9 @@ function App() {
           <h1>CV Builder</h1>
           <div className="main-header-btn">
             <button type="button">Clear Resume</button>
-            <button type="button">Load Example</button>
+            <button type="button" onClick={handleExampleClick}>
+              Load Example
+            </button>
           </div>
         </header>
         <main>
