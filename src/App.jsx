@@ -4,6 +4,7 @@ import { Person } from "./Person.jsx";
 import { ListExperience } from "./Experience.jsx";
 import { Education } from "./Education.jsx";
 import { initialPersonal, initialExperience } from "./initial.jsx";
+import { CVExperienceList } from "./CVExperience.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(initialPersonal);
@@ -25,12 +26,20 @@ function App() {
     }));
   }
 
-  function handleExperienceListChange(e) {
+  function handleExperienceListChange(e, id) {
     const { name, value } = e.target;
-    setExperienceList((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    console.log("Updating field:", name);
+    console.log("With value:", value);
+    console.log("For the item with ID:", id);
+
+    setExperienceList((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          return { ...item, [name]: value };
+        }
+        return item;
+      }),
+    );
   }
 
   function handleEducationChange(e) {
@@ -104,30 +113,7 @@ function App() {
             <section className="result">
               <h3 className="result-title">PROFESSIONAL EXPERIENCE</h3>
               <hr></hr>
-              <div>
-                <section className="content-section">
-                  {/* <p>
-                    {experience.startDate} - {experience.endDate}
-                  </p>
-                  <div>
-                    <h4>{experience.company}</h4>
-                    <h5>{experience.position}</h5>
-                    <p>{experience.description}</p>
-                  </div> */}
-                </section>
-                <section className="content-section">
-                  <p>{/* {experience.startDate} - {experience.endDate} */}</p>
-                  <div>
-                    <h4>Web Solutions Ltd.</h4>
-                    <h5>Frontend Developer</h5>
-                    <p>
-                      {
-                        "Built responsive user interfaces for corporate client web applications. Collaborated closely with design teams to translate wireframes into clean, interactive code frameworks."
-                      }
-                    </p>
-                  </div>
-                </section>
-              </div>
+              <CVExperienceList data={experienceList}></CVExperienceList>
             </section>
             <section className="result">
               <h3 className="result-title">EDUCATION</h3>

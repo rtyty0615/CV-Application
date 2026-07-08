@@ -10,7 +10,7 @@ export function ListExperience(props) {
           <Experience
             key={experienceItem.id}
             data={experienceItem}
-            onChange={props.onChange}
+            onChange={(e) => props.onChange(e, experienceItem.id)}
           />
         );
       })}
