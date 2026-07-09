@@ -54,6 +54,14 @@ function App() {
     ]);
   }
 
+  function handleDeleteExClick(id) {
+    setExperienceList((prev) => prev.filter((item) => item.id !== id));
+  }
+
+  function handleDeleteEdClick(id) {
+    setEducationList((prev) => prev.filter((item) => item.id !== id));
+  }
+
   function handlePersonalChange(e) {
     const { name, value } = e.target;
     setPersonalInfo((prev) => ({
@@ -137,6 +145,7 @@ function App() {
                   <ListExperience
                     data={experienceList}
                     onChange={handleExperienceListChange}
+                    onClick={handleDeleteExClick}
                   ></ListExperience>
                 </>
               )}
@@ -164,6 +173,7 @@ function App() {
                   <ListEducation
                     data={educationList}
                     onChange={handleEducationListChange}
+                    onClick={handleDeleteEdClick}
                   ></ListEducation>
                 </>
               )}

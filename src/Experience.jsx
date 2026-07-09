@@ -11,6 +11,7 @@ export function ListExperience(props) {
             key={experienceItem.id}
             data={experienceItem}
             onChange={(e) => props.onChange(e, experienceItem.id)}
+            onClick={() => props.onClick(experienceItem.id)}
           />
         );
       })}
@@ -18,12 +19,14 @@ export function ListExperience(props) {
   );
 }
 
-function Experience({ data, onChange }) {
+function Experience({ data, onChange, onClick }) {
   return (
     <li className="input-list">
       <div className="delete-container">
         <h3>{data.company}</h3>
-        <button type="button">delete</button>
+        <button type="button" onClick={onClick}>
+          delete
+        </button>
       </div>
 
       <Input

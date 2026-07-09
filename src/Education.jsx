@@ -10,6 +10,7 @@ export function ListEducation(props) {
             key={educationItem.id}
             data={educationItem}
             onChange={(e) => props.onChange(e, educationItem.id)}
+            onClick={() => props.onClick(educationItem.id)}
           />
         );
       })}
@@ -17,12 +18,14 @@ export function ListEducation(props) {
   );
 }
 
-function Education({ data, onChange }) {
+function Education({ data, onChange, onClick }) {
   return (
-    <section className="input-list">
+    <li className="input-list">
       <div className="delete-container">
         <h3>{data.school}</h3>
-        <button type="button">delete</button>
+        <button type="button" onClick={onClick}>
+          delete
+        </button>
       </div>
 
       <Input
@@ -60,6 +63,6 @@ function Education({ data, onChange }) {
           className="date end-date"
         ></Input>
       </div>
-    </section>
+    </li>
   );
 }
