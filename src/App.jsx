@@ -15,6 +15,7 @@ import { CVEducationList } from "./CVEducation.jsx";
 
 function App() {
   const [editStatus, setEdit] = useState(initalStatus);
+
   function handleEditClick(e) {
     const { name } = e.target;
     setEdit((prev) => ({
@@ -37,6 +38,20 @@ function App() {
     setPersonalInfo(clearPersonal);
     setExperienceList(clearExperience);
     setEducationList(clearEducation);
+  }
+
+  function handleAddExClick() {
+    setExperienceList((prev) => [
+      ...prev,
+      { ...clearExperience[0], id: crypto.randomUUID() },
+    ]);
+  }
+
+  function handleAddEdClick() {
+    setEducationList((prev) => [
+      ...prev,
+      { ...clearEducation[0], id: crypto.randomUUID() },
+    ]);
   }
 
   function handlePersonalChange(e) {
@@ -112,7 +127,11 @@ function App() {
               </header>
               {editStatus.experience && (
                 <>
-                  <button className="add-btn" type="button">
+                  <button
+                    className="add-btn"
+                    type="button"
+                    onClick={handleAddExClick}
+                  >
                     + Add Experience
                   </button>
                   <ListExperience
@@ -135,7 +154,11 @@ function App() {
               </header>
               {editStatus.education && (
                 <>
-                  <button className="add-btn" type="button">
+                  <button
+                    className="add-btn"
+                    type="button"
+                    onClick={handleAddEdClick}
+                  >
                     + Add Education
                   </button>
                   <ListEducation
