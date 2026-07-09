@@ -1,16 +1,31 @@
-# React + Vite
+# CV Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, component-driven resume generator built with React.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+CV Builder is a modern, single-page web application designed to help users create well-structured professional resumes quickly and efficiently. Built entirely with React and Vite, the application utilizes a modular component architecture to manage distinct resume sections such as Personal Details, Professional Experience, and Education. Users can dynamically input their information on the left column and instantly see a clean, print-ready document preview rendered in real-time on the right column.
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Real-Time Live Preview: A dual-pane layout connects input forms directly to a centralized state pipeline, updating the CV document preview with every single keystroke.
 
-## Expanding the ESLint configuration
+- Dynamic List Management: Users can add, update, or remove multiple work experience blocks and educational milestones smoothly, driven by safe state arrays and immutable list mapping.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Component-Driven Architecture: The application features highly reusable input components, dynamic multi-field custom text areas, and decoupled layout components to ensure code maintainability.
+
+- Interactive Panel Toggling: Forms feature an intelligent "Save" and "Edit" state mapping system using key-value object lookup to toggle view states efficiently without complex array iterations.
+
+- Instant Optimization: A built-in functionality allowing users to load an example template instantly or clear the entire canvas to start from scratch.
+
+## Tech Stack & Architecture
+
+The underlying application relies heavily on modern web standards and architectural design patterns:
+
+- React (Hooks & State Management): Employs safe asynchronous functional update paradigms, object destructuring, and array filtering mechanics to handle form data cleanly.
+
+- JavaScript (ES6+): Deep utilization of the spread operator, implicit returns, and dynamic bracket property access.
+
+- CSS3 & Flexbox Layouts: Structured using standard cascading stylesheets, robust parent-child specific layout selectors, and directional flexbox grids to manage form fields smoothly.
+
+- Vite: Utilized as the fast local build tool and bundler to optimize the deployment package
